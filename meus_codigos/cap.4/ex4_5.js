@@ -4,7 +4,7 @@ const resp = document.querySelector("h3")
 frm.addEventListener("submit", (e) => {
   e.preventDefault()
 
-  const numero = Number(InNumero.value)
+  const numero = Number(inNumero.value)
 
   const raiz = Math.sqrt(numero)
   if (Number.isInteger(raiz)) {
