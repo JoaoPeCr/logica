@@ -1,18 +1,20 @@
 const frm = document.querySelector("form"); //cria a referência do form.
-const resp1 = document.querySelector("h3"); //cria a referência pra saída.
+const resp = document.querySelector("h3"); //cria a referência pra saída.
 
 frm.addEventListener("submit", (e) => { //cia o ouvinte atravéz do submit.
   e.preventDefault(); //evita o envio do form.
 
-  const velocidadePermitida = Number(frm.inVelocidadePermitida.value); //obtém o valor do form
-  const velocidadeDoCondutor = Number(frm.inVelocidadeDoCondutor.value);
+  const velPermitida = Number(frm.inVelPermitida.value); //obtém os valores do form.
+  const velCondutor = Number(frm.inVelCondutor.value);
 
-  const resposta =
-    velocidadeDoCondutor <= velocidadePermitida
-      ? "Sem Multa"
-      : velocidadePermitida / 5 + velocidadePermitida >= velocidadeDoCondutor
-      ? "Multa Leve"
-      : "Multa Grave";
-
-  resp1.innerText = `Situação: ${resposta}.`;
+  if (velCondutor <= velPermitida) { 
+    resp.innerText = "Situação: Sem Multa"
+  } else {
+    const maisVinte = velPermitida * 1.2
+    if (velCondutor <= maisVinte) {
+      resp.innerText = "Situação: Multa Leve"
+    } else {
+      resp.innerText = "Situação: Multa Grave"
+    }
+  }
 });
